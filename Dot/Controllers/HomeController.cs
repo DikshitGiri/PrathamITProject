@@ -1,6 +1,7 @@
 ﻿using Dot.Data;
 using Dot.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Diagnostics;
 using System.Net;
@@ -33,6 +34,21 @@ namespace Dot.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+        public IActionResult Entry()
+        {
+            var category = Context.Itemlist.ToList();
+            ViewBag.data = category;
+            return View();
+           
+        }
+        [HttpPost]
+        public IActionResult Entry(EntryPoint ep)
+        {
+            Context.Inventories.Add(ep);
+            Context.SaveChanges();
+            return View(ep);
+
         }
         public IActionResult Travel()
         {
@@ -72,11 +88,29 @@ namespace Dot.Controllers
         [HttpPost]
         public IActionResult Update(TravelTicket t)
 
-        {   Context.Tickets.Update(t);
+        {   
+            Context.Tickets.Update(t);
             Context.SaveChanges();
             return RedirectToAction("Result");
            
         }
+        public IActionResult Details(int id)
+
+        {
+            
+            return View(Context.Tickets.Find(id));
+
+        }
+        public IActionResult Delete(int id)
+        {
+            var ToDelete = Context.Tickets.Find(id);
+            Context.Tickets.Remove(ToDelete);
+            Context.SaveChanges();
+            return RedirectToAction("Result");
+          
+        }
+        
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

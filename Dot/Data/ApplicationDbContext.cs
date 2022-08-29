@@ -15,7 +15,10 @@ namespace Dot.Data
 
 
 
-        public DbSet<TravelTicket> Tickets { get; set; }
+
+        public DbSet<TravelTicket> Tickets { get;set; }
+        public DbSet<EntryPoint> Inventories { get; set; }
+        public DbSet<Category> Itemlist { get; set; }
     }
 
     

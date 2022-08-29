@@ -1,48 +1,29 @@
-﻿@model Dot.Models.TravelTicket
-@{
-    ViewData["Title"] = "Travel";
-}
-@Html.AntiForgeryToken()
-<h1>Travel</h1>
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
 
-<h4>TravelTicket</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Travel">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Booked" class="control-label"></label>
-                <input asp-for="Booked" class="form-control" />
-                <span asp-validation-for="Booked" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <input asp-for="Category" class="form-control" />
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PassangerName" class="control-label"></label>
-                <input asp-for="PassangerName" class="form-control" />
-                <span asp-validation-for="PassangerName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Route" class="control-label"></label>
-                <input asp-for="Route" class="form-control" />
-                <span asp-validation-for="Route" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<form method="POST" action="Travel">
+    <div class="form-group">
+        
+        <input type="hidden" class="form-control" name="Id" >
+   
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-@{
-    if(!(@Model is null)){
-    <p>
-        @Model.Route
-    </p>}}
+    <div class="form-group">
+        <label for="exampleInputPassword1">Booked</label>
+        <input type="text" class="form-control" name="Booked"  >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Category</label>
+        <input type="Text"  class="form-control"  name="Category">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Passanger_name</label>
+        <input type="Text" class="form-control"name="PassangerName" >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Route</label>
+            <input type="text" class="form-control" name="Route" >
+    </div>
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

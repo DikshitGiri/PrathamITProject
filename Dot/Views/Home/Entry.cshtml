@@ -1,0 +1,64 @@
+﻿@model Dot.Models.EntryPoint
+
+@{
+    ViewData["Title"] = "Entry";
+}
+
+<h1>Entry</h1>
+
+<h4>EntryPoint</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Entry">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CreatedDate" class="control-label"></label>
+                <input asp-for="CreatedDate" class="form-control" />
+                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+         
+         
+                
+                <span asp-validation-for="Category" class="text-danger"></span>
+                <label asp-for="Category" class="control-label"></label>
+                <select asp-for="Category" class="form-control" asp-items="@(new SelectList(ViewBag.data,"Id","Items"))">
+                    <option value="">-- Select Category --</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantity" class="control-label"></label>
+                <input asp-for="Quantity" class="form-control" />
+                <span asp-validation-for="Quantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price_per_unit" class="control-label"></label>
+                <input asp-for="Price_per_unit" class="form-control" />
+                <span asp-validation-for="Price_per_unit" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+    @{
+        if (!(@Model is null))
+        {
+        <p>
+                @Model.Quantity
+        </p>
+        }
+    }
+    

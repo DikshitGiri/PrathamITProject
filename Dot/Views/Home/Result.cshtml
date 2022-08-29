@@ -1,53 +1,34 @@
-﻿@model IEnumerable<Dot.Models.TravelTicket>
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@*@model IEnumerable<Dot.Models.TravelTicket>*@
 
-@{
-    ViewData["Title"] = "Result";
-}
-
-<h1>Result</h1>
-
-<p>
-    <a asp-action="Travel">Create New</a>
-</p>
 <table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Booked)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Category)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PassangerName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Route)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Booked)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PassangerName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Route)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Booked</th>
+      <th scope="col">Category</th>
+      <th scope="col">PassangerName</th>
+      <th scope="col">Route</th>
+    </tr>
+  </thead>
+  <tbody>
+        @foreach (var item in Model){
+    <tr>
+       <td>@item</td>
+       <td>@item.Booked</td>
+       <td>@item.Category</td> 
+       <td>@item.PassangerName</td>
+       <td>@item.Route</td>
+        <td>
+          <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a> |
+          <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-success">Details</a> |
+          <a asp-action="Delete" asp-route-id="@item.Id"class="btn btn-danger">Delete</a>
+        </td>
+       
+    </tr>
+    
+      } 
+  </tbody>
 </table>

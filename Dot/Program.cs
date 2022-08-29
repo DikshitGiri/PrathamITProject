@@ -2,6 +2,8 @@ using Dot.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<DbContext, ApplicationDbContext>();
 // Add services to the container.
